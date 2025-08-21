@@ -96,9 +96,9 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
       setErrMsg(errorText)
     } else {
       if (year.value === 'all') {
-        setSearchQuery(`${API_LINK}/other/crl.json?search=${searchField}:*${search}*&limit=1000`)
+        setSearchQuery(`${API_LINK}/transparency/crl.json?search=${searchField}:*${search}*&limit=1000`)
       } else {
-        setSearchQuery(`${API_LINK}/other/crl.json?search=${searchField}:*${search}+AND+letter_date:[${year.value}-01-01+TO+${year.value}-12-31]*&limit=1000`)
+        setSearchQuery(`${API_LINK}/transparency/crl.json?search=${searchField}:*${search}+AND+letter_date:[${year.value}-01-01+TO+${year.value}-12-31]*&limit=1000`)
       }
     }
   };
