@@ -1,0 +1,117 @@
+// Your custom changes to variables go here
+// Uncomment to see this working
+// $theme-color-primary-darker: 'black';
+
+$clrBase: #212121;
+$clrGrayCoolLight: #dce4ef;
+$clrGrayDark: #323a45;
+$clrGrayLight: #aeb0b5;
+$clrGrayLighter: #d6d7d9;
+$clrGrayLighter2: #eee;
+$clrGrayLightest: #f1f1f1;
+$clrGrayWarmDark: #494440;
+$clrGrayWarmLight: #e4e2e0;
+$clrGray: #5b616b;
+$clrGreen: #2e8540;
+$clrGreenLight: #4aa564;
+$clrPrimaryAltDark: #046b99;
+$clrPrimaryAltDarkest: #00a6d2;
+$clrPrimaryAltLight: #9bdaf1;
+$clrPrimaryAltLightest: #e1f3f8;
+$clrPrimaryAlt: #02bfe7;
+$clrPrimaryDarker: #00517D;
+$clrPrimaryDarkest: #003b58;
+$clrPrimary: #007cba;
+$clrSecondaryDark: #cd2026;
+$clrSecondaryDarkest: #981b1e;
+$clrSecondaryLight: #e59393;
+$clrSecondaryLightest: #f9dede;
+$clrSecondary: #e31c3d;
+$clrDarkBlue: #001871;
+$clrCoolBlue: #205493;
+$clrCoolBlueLight: #4773aa;
+$clrCoolBlueLighter: #8ba6ca;
+$clrCoolBlueLightest: #dce4ef;
+$clrLightBlue: #8BD4E2;
+$clrWhite: #fff;
+$clrMutedWhite: #eaebeb;
+$clrBlack: #000;
+
+// hash for iteration, ie, auto creating classes
+$uswds-colors: (
+    'base': $clrBase,
+    'gray-cool-light': $clrGrayCoolLight,
+    'gray-dark': $clrGrayDark,
+    'gray-light': $clrGrayLight,
+    'gray-lighter': $clrGrayLighter,
+    'gray-lighter-2': $clrGrayLighter2,
+    'gray-lightest': $clrGrayLightest,
+    'gray-warm-dark': $clrGrayWarmDark,
+    'gray-warm-light': $clrGrayWarmLight,
+    'gray': $clrGray,
+    'primary-alt-dark': $clrPrimaryAltDark,
+    'primary-alt-darkest': $clrPrimaryAltDarkest,
+    'primary-alt-light': $clrPrimaryAltLight,
+    'primary-alt-lightest': $clrPrimaryAltLightest,
+    'primary-alt': $clrPrimaryAlt,
+    'primary-darker': $clrPrimaryDarker,
+    'primary-darkest': $clrPrimaryDarkest,
+    'primary': $clrPrimary,
+    'secondary-dark': $clrSecondaryDark,
+    'secondary-darkest': $clrSecondaryDarkest,
+    'secondary-light': $clrSecondaryLight,
+    'secondary-lightest': $clrSecondaryLightest,
+    'secondary': $clrSecondary,
+    'dark-blue': $clrDarkBlue,
+    'cool-blue': $clrCoolBlue,
+    'cool-blue-light': $clrCoolBlueLight,
+    'cool-blue-lighter': $clrCoolBlueLighter,
+    'cool-blue-lightest': $clrCoolBlueLightest,
+    'light-blue': $clrLightBlue,
+    'white': $clrWhite,
+    'muted-white': $clrMutedWhite,
+    'black': $clrBlack,
+    'green': $clrGreen,
+    'green-light': $clrGreenLight,
+    'inherit': inherit,
+);
+
+/**
+ * @desc color helpers
+ * @returns color classes for every color in the hash
+ */
+@each $key, $value in $uswds-colors {
+  .clr-#{$key} {
+    color: $value;
+  }
+
+  .bg-#{$key} {
+    background-color: $value;
+  }
+
+  .hvr-bg-#{$key}.active,
+  .hvr-bg-#{$key}:hover,
+  .hvr-bg-#{$key}:active {
+    background-color: $value;
+  }
+
+  .hvr-clr-#{$key}.active,
+  .hvr-clr-#{$key}:hover,
+  .hvr-clr-#{$key}:active {
+    color: $value;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.height-fit {
+  height: fit-content;
+}
+
+.small {
+  font-size: 15px;
+  font-weight: lighter;
+  line-height: 18px;
+}

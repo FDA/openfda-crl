@@ -1,0 +1,125 @@
+.banner-main {
+  height: 66.5px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.blue-nav-bar {
+  display: flex !important;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 24px;
+  padding-right: 24px;
+  text-decoration: none
+}
+
+.menu-shadow {
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.hhs {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  position: relative;
+  vertical-align: text-top;
+}
+
+.nav-bar {
+  width: 95%;
+}
+
+.logo-wrapper {
+  display: flex;
+  min-height: 50px;
+  margin-left: 0;
+}
+
+.fda-logo {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 86px;
+  flex-basis: 58.333333%;
+  flex-grow: 0;
+  max-width: 58.333333%;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  flex-basis: 41.666667%;
+  flex-grow: 0;
+  max-width: 41.666667%;
+  height:86px;
+}
+
+.nav-links > div {
+  padding:15px 30px;
+}
+
+.nav-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none!important;
+}
+
+.nav-active {
+  background-color: #007cba!important;
+  color: #fff!important;
+}
+
+.nav-active i {
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #fff;
+    height: 15px;
+    position: absolute;
+    top: 75px;
+}
+
+.footer-container {
+  min-height: 400px;
+  max-width: 1400px;
+  width: 95%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.footer-left {
+  max-width: 275px;
+  line-height: 24px;
+  margin-right: 40px;
+}
+
+.footer-left li:not(:first-child) {
+  margin-left: 40px;
+}
+
+.link-columns {
+  columns: 2;
+  color: #fff;
+}
+
+.footer-right {
+  width: 25%;
+}
+
+.footer-right p {
+  margin-bottom: 60px;
+  text-align: right;
+}
+
+.footer-right img {
+  left: -21px;
+}

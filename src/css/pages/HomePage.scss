@@ -1,0 +1,27 @@
+.main-content {
+  border-bottom: 1px solid #007cba;
+}
+
+.paragraph-hero {
+  height: 382px;
+}
+
+.vet-image {
+  flex-basis: 33.3333%;
+  -webkit-box-flex: 0;
+  flex-grow: 0;
+  max-width: 33.3333%;
+}
+
+.banner-paragraph {
+  flex-basis: 66.6667%;
+  -webkit-box-flex: 0;
+  flex-grow: 0;
+  max-width: 66.6667%;
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+#search-field {
+  min-width: 300px;
+}

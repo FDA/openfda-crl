@@ -1,0 +1,41 @@
+{
+  "name": "openfda-labelsearch",
+  "version": "1.0.0",
+  "private": true,
+  "description": "openfda-labelsearch",
+  "author": "violet.wren",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build --prefix-paths",
+    "serve": "gatsby serve --prefix-paths",
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource/montserrat": "^5.0.18",
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@trussworks/react-uswds": "^5.5.0",
+    "@uswds/uswds": "3.6.0",
+    "ag-grid-community": "^31.3.4",
+    "ag-grid-react": "^31.3.4",
+    "gatsby": "^5.13.7",
+    "gatsby-omni-font-loader": "^2.0.2",
+    "gatsby-plugin-sass": "^6.12.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "sass": "^1.66.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.3.3",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "typescript": "^5.1.6"
+  }
+}

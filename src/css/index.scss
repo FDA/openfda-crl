@@ -1,0 +1,43 @@
+@use "~ag-grid-community/styles" as ag;
+@import './helpers';
+@import './base';
+@import './uswds-custom-styles';
+
+/*
+  Hide compile warnings and notifications, make want to set to true in dev
+*/
+$theme-show-compile-warnings: false;
+$theme-show-notifications: false;
+
+// Custom theme settings/USWDS overrides go here <-- the settings you defined above
+//@forward 'uswds-theme';
+//@forward './node_modules/@uswds/uswds/packages/uswds/_index.scss';
+//@forward 'uswds-custom-styles';
+
+// Your custom SASS/CSS goes here
+@media screen and (min-width: 640px) {
+  .tablet\:width-1\/3 {
+    width: 33%;
+  }
+  .tablet\:float-left {
+    float: left;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .paginate-link {
+    display: initial;
+  }
+  .paginate-button {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .paginate-link {
+    display: none;
+  }
+  .paginate-button {
+    display: block;
+  }
+}
