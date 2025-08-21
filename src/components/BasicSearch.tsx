@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react"
 import { AgGridReact } from "ag-grid-react";
+import Select from 'react-select'
 import { Alert, TextInput } from '@trussworks/react-uswds'
 import CustomLoadingOverlay from "./CustomLoadingOverlay";
 import { API_LINK } from "../constants/api";
@@ -37,10 +38,19 @@ const column_map = {
   ]
 }
 
+const year_range = [{value: 'all', label: 'All'}]
+for (let year = new Date().getFullYear(); year !== null;) {
+  for (let i = 0; i < 5; i++, year = (year > 2002 ? year - 1 : null)) {
+    if (year !== null) {
+      year_range.push({value: year.toString(), label: year.toString()});
+    }
+  }
+}
+
 export default function BasicSearch({searchHeader, errorText, placeholder, searchField, searchLength, tableType}) {
   const [letters, setLetters] = useState<[] | null>(null)
   const [status, setStatus] = useState("approved")
-  const [year, setYear] = useState("all")
+  const [year, setYear] = useState(year_range[0])
   const [errMsg, setErrMsg] = useState('')
   const [search, setSearch] = useState('')
   const [search_query, setSearchQuery] = useState('')
@@ -85,10 +95,10 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
       setLetters(null)
       setErrMsg(errorText)
     } else {
-      if (year === 'All') {
+      if (year.value === 'all') {
         setSearchQuery(`${API_LINK}/other/crl.json?search=${searchField}:*${search}*&limit=1000`)
       } else {
-        setSearchQuery(`${API_LINK}/other/crl.json?search=${searchField}:*${search}+AND+letter_date:[${year}-01-01+TO+${year}-12-31]*&limit=1000`)
+        setSearchQuery(`${API_LINK}/other/crl.json?search=${searchField}:*${search}+AND+letter_date:[${year.value}-01-01+TO+${year.value}-12-31]*&limit=1000`)
       }
     }
   };
@@ -97,8 +107,8 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
     setStatus(e.target.value)
   }
 
-  const onYearChange = e => {
-    setYear(e.target.value)
+  const onYearChange = (option) => {
+    setYear(option)
   }
 
   const onFirstDataRendered = useCallback((params) => {
@@ -131,16 +141,26 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
               value={search}
               onChange={event => setSearch(event.target.value)}
             />
+            <span className='padding-top-1 padding-left-1'>({placeholder})</span>
             <div className='grid-col flex-column flex-align-center'>
               <h3>Status:</h3>
               <input type="radio" name="approved" value="Approved" id="approved" checked={status === "approved"} onChange={onStatusChange}/>
               <label className='center padding-left-1'>Approved</label>
             </div>
             <div className='grid-col flex-column flex-align-center'>
+              <h3>Year:</h3>
+              <Select
+                defaultValue={year_range[0]}
+                name="years"
+                options={year_range}
+                value={year}
+                onChange={onYearChange}
+                className="basic-multi-select year-select"
+                classNamePrefix="select"
+              />
             </div>
-            <span className='padding-top-1 padding-left-1'>({placeholder})</span>
           </div>
-          <button className='minw-205 usa-button margin-top-2' type='submit'>
+          <button className='minw-205 usa-button margin-top-2 margin-bottom-2' type='submit'>
             <span className="usa-search__submit-text">Search</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"

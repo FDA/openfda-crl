@@ -8,6 +8,7 @@ import '../css/components/Layout.scss'
 import '../css/pages/HomePage.scss'
 import Layout from "../components/Layout";
 import BasicSearch from "../components/BasicSearch";
+import Chart from "../components/Chart";
 
 const IndexPage: React.FC<PageProps> = () => {
 
@@ -17,19 +18,18 @@ const IndexPage: React.FC<PageProps> = () => {
         <div className='flex'>
           <div className='bg-white padding-3'>
             <h2>Complete Response Letters</h2>
-
-            // TODO: Add chart here.
-              <BasicSearch
-                searchHeader='Company Name'
-                errorText='At least three characters are required.'
-                placeholder="Type in all or part of the company's name"
-                searchField='company_name'
-                searchLength={3}
-                columnLabels={['Status','CRL Date','Company Name','CRL File']}
-                tableType='standard'
-                linkColumn='application_number'
-                columnDefs={['status','letter_date','company_name', 'application_number']}
-              />
+            <Chart></Chart>
+            <BasicSearch
+              searchHeader='Company Name'
+              errorText='At least three characters are required.'
+              placeholder="Type in all or part of the company's name"
+              searchField='company_name'
+              searchLength={3}
+              columnLabels={['Status','CRL Date','Company Name','CRL File']}
+              tableType='standard'
+              linkColumn='application_number'
+              columnDefs={['status','letter_date','company_name', 'application_number']}
+            />
           </div>
         </div>
       </section>
