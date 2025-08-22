@@ -9,6 +9,7 @@ import '../css/pages/HomePage.scss'
 import Layout from "../components/Layout";
 import BasicSearch from "../components/BasicSearch";
 import Chart from "../components/Chart";
+import { StaticImage } from "gatsby-plugin-image";
 
 const IndexPage: React.FC<PageProps> = () => {
 
@@ -18,11 +19,21 @@ const IndexPage: React.FC<PageProps> = () => {
         <div className='flex'>
           <div className='bg-white padding-3'>
             <h2>Complete Response Letters</h2>
-            <Chart></Chart>
+            <div className='grid-row flex-row'>
+              <Chart/>
+              <StaticImage
+                src="../images/word_cloud2.png" // Relative path to your image
+                alt="CRLs Word Cloud"
+                placeholder="blurred" // Optional: "blurred", "tracedSVG", "none"
+                layout="constrained" // Optional: "fixed", "fullWidth", "constrained"
+                width={512} // Optional: Specify width for fixed/constrained layouts
+                height={512} // Optional: Specify height for fixed/constrained layouts
+              />
+            </div>
             <BasicSearch
               searchHeader='Company Name'
               errorText='At least three characters are required.'
-              placeholder="Type in all or part of the company's name"
+              placeholder="Type in all or part of the company's name, or type *** to search all"
               searchField='company_name'
               searchLength={3}
               columnLabels={['Status','CRL Date','Company Name','CRL File']}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react"
 import { AgGridReact } from "ag-grid-react";
 import Select from 'react-select'
+import Moment from 'moment'
 import { Alert, TextInput } from '@trussworks/react-uswds'
 import CustomLoadingOverlay from "./CustomLoadingOverlay";
 import { API_LINK } from "../constants/api";
@@ -31,6 +32,10 @@ const column_map = {
     {
       field: 'file_name',
       headerName: 'CRL File',
+      comparator: (valueA, valueB) => {
+        if (valueA.application_number.toLowerCase() == valueB.application_number.toLowerCase()) return 0;
+        return (valueA.application_number.toLowerCase() > valueB.application_number.toLowerCase()) ? 1 : -1;
+      },
       cellRenderer:(params) => {
         return <a href={CRL_File_LINK + params.value.file_name} target="_blank">{params.value.application_number}</a>
       }
@@ -73,7 +78,7 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
           json.results.map(result => {
             data.push({
               'status': "Approved",
-              'letter_date': result.letter_date,
+              'letter_date': Moment(result.letter_date).format('YYYY/MM/DD'),
               'company_name': result.company_name,
               'file_name': {'application_number': result['application_number'][0],'file_name': result['file_name']},
             })
@@ -141,7 +146,7 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
               value={search}
               onChange={event => setSearch(event.target.value)}
             />
-            <span className='padding-top-1 padding-left-1'>({placeholder})</span>
+            <div className='padding-top-1 padding-left-05'>({placeholder})</div>
             <div className='grid-col flex-column flex-align-center'>
               <h3>Status:</h3>
               <input type="radio" name="approved" value="Approved" id="approved" checked={status === "approved"} onChange={onStatusChange}/>
@@ -203,6 +208,7 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
           )}
         </div>
       </div>
+      <h3 className='margin-bottom-0'><a className='padding-1' href='https://openfda-site.preprod.fda.gov/apis/transparency/completeresponseletters/'>CRLs API Documentation</a></h3>
     </div>
   )
 }

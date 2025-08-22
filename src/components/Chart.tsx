@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react"
+import React, { useState, useEffect } from "react"
 import { LineChart, Line, Legend, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
-import CustomLoadingOverlay from "./CustomLoadingOverlay";
 import { API_LINK } from "../constants/api";
 
 import '@trussworks/react-uswds/lib/uswds.css'

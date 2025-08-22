@@ -10,7 +10,18 @@ const config: GatsbyConfig = {
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
-  plugins: ["gatsby-plugin-sass"]
+  plugins: [
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`, // Name your image source
+        path: `${__dirname}/src/images`, // Path to your images folder
+      }
+    }
+    ]
 };
 
 export default config;
