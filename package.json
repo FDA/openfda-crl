@@ -1,8 +1,8 @@
 {
-  "name": "openfda-labelsearch",
+  "name": "openfda-crl",
   "version": "1.0.0",
   "private": true,
-  "description": "openfda-labelsearch",
+  "description": "openfda-crl",
   "author": "violet.wren",
   "keywords": [
     "gatsby"
