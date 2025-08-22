@@ -81,7 +81,7 @@ export default function BasicSearch() {
 
 
   return (
-    <div className='bg-white margin-top-3 padding-left-2 padding-right-3 padding-bottom-5'>
+    <div className='bg-white margin-top-5 padding-left-2 padding-right-3'>
       <LineChart width={990} height={400} data={chartData}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="year" interval={1} />

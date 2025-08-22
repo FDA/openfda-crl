@@ -18,7 +18,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <section className='main-content'>
         <div className='flex'>
           <div className='bg-white padding-3'>
-            <h2>Complete Response Letters</h2>
+            <h2 className='margin-bottom-0'>Complete Response Letters</h2>
             <div className='grid-row flex-row flex-align-center'>
               <Chart/>
               <StaticImage
