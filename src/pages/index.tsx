@@ -19,13 +19,13 @@ const IndexPage: React.FC<PageProps> = () => {
         <div className='flex'>
           <div className='bg-white padding-3'>
             <h2>Complete Response Letters</h2>
-            <div className='grid-row flex-row'>
+            <div className='grid-row flex-row flex-align-center'>
               <Chart/>
               <StaticImage
-                src="../images/word_cloud2.png" // Relative path to your image
+                src="../images/word_cloud.png" // Relative path to your image
                 alt="CRLs Word Cloud"
                 placeholder="blurred" // Optional: "blurred", "tracedSVG", "none"
-                layout="constrained" // Optional: "fixed", "fullWidth", "constrained"
+                layout="fixed" // Optional: "fixed", "fullWidth", "constrained"
                 width={512} // Optional: Specify width for fixed/constrained layouts
                 height={512} // Optional: Specify height for fixed/constrained layouts
               />
