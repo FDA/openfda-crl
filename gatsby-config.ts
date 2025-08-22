@@ -3,7 +3,7 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   pathPrefix: `/crltable`,
   siteMetadata: {
-    title: `openfda-crltable`,
+    title: `Complete Response Letters`,
     siteUrl: `https://openfda-site.preprod.fda.gov`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
