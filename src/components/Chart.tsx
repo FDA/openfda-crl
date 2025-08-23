@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { LineChart, Line, Legend, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import { LineChart, Line, Legend, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 import { API_LINK } from "../constants/api";
 
 import '@trussworks/react-uswds/lib/uswds.css'
@@ -81,16 +81,16 @@ export default function BasicSearch() {
 
 
   return (
-    <div className='bg-white margin-top-5 padding-left-2 padding-right-3'>
-      <LineChart width={990} height={400} data={chartData}>
+    <ResponsiveContainer className='bg-white margin-top-5 padding-right-3' style={{maxWidth:800}} height={400}>
+      <LineChart data={chartData}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="year" interval={1} />
         <YAxis/>
-        <Tooltip />
+        <Tooltip/>
         <Legend onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
         <Line type="monotone" dataKey="NDA" stroke="crimson" strokeOpacity={ndaOpacity} />
         <Line type="monotone" dataKey="BLA" stroke="blue" strokeOpacity={blaOpacity} />
       </LineChart>
-    </div>
+    </ResponsiveContainer>
   )
 }
