@@ -54,7 +54,7 @@ for (let year = new Date().getFullYear(); year !== null;) {
 
 export default function BasicSearch({searchHeader, errorText, placeholder, searchField, searchLength, tableType}) {
   const [letters, setLetters] = useState<[] | null>(null)
-  const [status, setStatus] = useState("approved")
+  const [status, setStatus] = useState("All")
   const [year, setYear] = useState(year_range[0])
   const [errMsg, setErrMsg] = useState('')
   const [search, setSearch] = useState('')
@@ -77,7 +77,7 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
           let data = []
           json.results.map(result => {
             data.push({
-              'status': "Approved",
+              'status': result.approval_status,
               'letter_date': Moment(result.letter_date).format('YYYY/MM/DD'),
               'company_name': result.company_name,
               'file_name': {'application_number': result['application_number'][0],'file_name': result['file_name']},
@@ -101,9 +101,17 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
       setErrMsg(errorText)
     } else {
       if (year.value === 'all') {
-        setSearchQuery(`${API_LINK}/transparency/crl.json?search=${searchField}:*${search}*&limit=1000`)
+        if (status === 'All') {
+          setSearchQuery(`${API_LINK}/transparency/crl.json?search=${searchField}:*${search}*&limit=1000`)
+        } else {
+          setSearchQuery(`${API_LINK}/transparency/crl.json?search=${searchField}:*${search}*+AND+approval_status:${status}&limit=1000`)
+        }
       } else {
-        setSearchQuery(`${API_LINK}/transparency/crl.json?search=${searchField}:*${search}+AND+letter_date:[${year.value}-01-01+TO+${year.value}-12-31]*&limit=1000`)
+        if (status === 'All') {
+          setSearchQuery(`${API_LINK}/transparency/crl.json?search=${searchField}:*${search}*+AND+letter_date:[${year.value}-01-01+TO+${year.value}-12-31]&limit=1000`)
+        } else {
+          setSearchQuery(`${API_LINK}/transparency/crl.json?search=${searchField}:*${search}*+AND+approval_status:${status}+AND+letter_date:[${year.value}-01-01+TO+${year.value}-12-31]&limit=1000`)
+        }
       }
     }
   };
@@ -149,8 +157,12 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
             <div className='padding-top-1 padding-left-05'>({placeholder})</div>
             <div className='grid-col flex-column flex-align-center'>
               <h3>Status:</h3>
-              <input type="radio" name="approved" value="Approved" id="approved" checked={status === "approved"} onChange={onStatusChange}/>
-              <label className='center padding-left-1'>Approved</label>
+              <input type="radio" name="approved" value="All" id="all" checked={status === "All"} onChange={onStatusChange}/>
+              <label className='center padding-left-1 padding-right-2'>All</label>
+              <input type="radio" name="approved" value="Approved" id="approved" checked={status === "Approved"} onChange={onStatusChange}/>
+              <label className='center padding-left-1 padding-right-2'>Approved</label>
+              <input type="radio" name="approved" value="Unapproved" id="unapproved" checked={status === "Unapproved"} onChange={onStatusChange}/>
+              <label className='center padding-left-1 padding-right-2'>Unapproved</label>
             </div>
             <div className='grid-col flex-column flex-align-center'>
               <h3>Year:</h3>
