@@ -220,7 +220,7 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
           )}
         </div>
       </div>
-      <h3 className='margin-bottom-0'><a className='padding-1' href='https://openfda-site.preprod.fda.gov/apis/transparency/completeresponseletters/'>CRLs API Documentation</a></h3>
+      <h3 className='margin-bottom-0'><a className='padding-1' href='https://open.fda.gov/apis/transparency/completeresponseletters/'>CRLs API Documentation</a></h3>
     </div>
   )
 }

@@ -4,7 +4,7 @@ const config: GatsbyConfig = {
   pathPrefix: `/crltable`,
   siteMetadata: {
     title: `Complete Response Letters`,
-    siteUrl: `https://openfda-site.preprod.fda.gov`
+    siteUrl: `https://open.fda.gov`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
