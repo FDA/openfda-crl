@@ -96,24 +96,26 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
   const searchHandler = (event) => {
     event.preventDefault()
     event.stopPropagation()
+    let search_query = `${API_LINK}/transparency/crl.json?`
+    let search_parameter = false
+    if (search !== '***') {
+      search_parameter = true
+      search_query = `${search_query}search=${searchField}:*${search}*`
+    }
     if (search.length < searchLength) {
       setLetters(null)
       setErrMsg(errorText)
     } else {
-      if (year.value === 'all') {
-        if (status === 'All') {
-          setSearchQuery(`${API_LINK}/transparency/crl.json?search=${searchField}:*${search}*&limit=1000`)
-        } else {
-          setSearchQuery(`${API_LINK}/transparency/crl.json?search=${searchField}:*${search}*+AND+approval_status:${status}&limit=1000`)
-        }
-      } else {
-        if (status === 'All') {
-          setSearchQuery(`${API_LINK}/transparency/crl.json?search=${searchField}:*${search}*+AND+letter_date:[${year.value}-01-01+TO+${year.value}-12-31]&limit=1000`)
-        } else {
-          setSearchQuery(`${API_LINK}/transparency/crl.json?search=${searchField}:*${search}*+AND+approval_status:${status}+AND+letter_date:[${year.value}-01-01+TO+${year.value}-12-31]&limit=1000`)
-        }
+      if (status !== 'All') {
+        search_query= `${search_query}${search_parameter?'+AND+':'search='}approval_status:${status}`
+        search_parameter = true
+      }
+      if (year.value !== 'all') {
+        search_query = `${search_query}${search_parameter?'+AND+':'search='}letter_date:[${year.value}-01-01+TO+${year.value}-12-31]`
+        search_parameter = true
       }
     }
+    setSearchQuery(`${search_query}${search_parameter?'&':''}limit=1000`)
   };
 
   const onStatusChange = e => {
