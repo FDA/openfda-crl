@@ -81,7 +81,7 @@ export default function BasicSearch() {
 
 
   return (
-    <ResponsiveContainer className='bg-white margin-top-5 padding-right-3' style={{maxWidth:800}} height={400}>
+    <ResponsiveContainer className='bg-white margin-top-5 padding-right-3' style={{maxWidth:1600}} height={400}>
       <LineChart data={chartData}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="year" interval={1} />

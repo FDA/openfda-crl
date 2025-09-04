@@ -8,7 +8,6 @@ import '../css/pages/HomePage.scss'
 import Layout from "../components/Layout";
 import BasicSearch from "../components/BasicSearch";
 import Chart from "../components/Chart";
-import { StaticImage } from "gatsby-plugin-image";
 
 const IndexPage: React.FC<PageProps> = () => {
 
@@ -17,16 +16,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <section className='main-content'>
         <div className='flex flex-column bg-white padding-3' style={{maxWidth:'1600px'}}>
           <h2 className='margin-bottom-0'>Complete Response Letters</h2>
-          <div className='flex width-full'>
-            <Chart/>
-            <StaticImage
-              src="../images/word_cloud.png" // Relative path to your image
-              alt="CRLs Word Cloud"
-              placeholder="blurred" // Optional: "blurred", "tracedSVG", "none"
-              layout="constrained" // Optional: "fixed", "fullWidth", "constrained"
-              style={{maxWidth:'450px', maxHeight:'450px'}}
-            />
-          </div>
+          <Chart/>
           <BasicSearch
             searchHeader='Company Name'
             errorText='At least three characters are required.'
