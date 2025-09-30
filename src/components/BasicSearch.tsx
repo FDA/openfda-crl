@@ -108,7 +108,7 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
     let search_parameter = false
     if (search !== '***') {
       search_parameter = true
-      search_query = `${search_query}search=${searchField}:"*${search}*"`
+      search_query = `${search_query}search=${searchField}:${search.replace(/\s/g, "\\ ")}*`
     }
     if (search.length < searchLength) {
       setLetters(null)
