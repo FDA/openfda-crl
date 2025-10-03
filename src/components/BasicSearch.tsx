@@ -37,7 +37,8 @@ const column_map = {
         return (valueA.application_number.toLowerCase() > valueB.application_number.toLowerCase()) ? 1 : -1;
       },
       cellRenderer:(params) => {
-        return <a href={CRL_File_LINK + params.value.file_name} target="_blank">{params.value.application_number}</a>
+        if (params.value.application_number !== "Under Review for Release") return <a href={CRL_File_LINK + params.value.file_name} target="_blank">{params.value.application_number}</a>
+        return <span>{params.value.file_name}</span>
       }
     },
   ]
@@ -76,11 +77,18 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
         .then(json => {
           let data = []
           json.results.map(result => {
+            let file_name = {}
+            if(result.hasOwnProperty('application_number')){
+              file_name = {'application_number': result['application_number'][0],'file_name': result.file_name}
+            } else {
+              file_name = {'application_number': result.file_name, 'file_name': result.file_name}
+            }
             data.push({
               'status': result.approval_status,
               'letter_date': Moment(result.letter_date).format('YYYY/MM/DD'),
               'company_name': result.company_name,
-              'file_name': {'application_number': result['application_number'][0],'file_name': result['file_name']},
+              //'file_name': {'application_number': result['application_number'][0],'file_name': result['file_name']},
+              'file_name': file_name
             })
           })
           setLetters(data)
@@ -100,7 +108,7 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
     let search_parameter = false
     if (search !== '***') {
       search_parameter = true
-      search_query = `${search_query}search=${searchField}:*${search}*`
+      search_query = `${search_query}search=${searchField}:${search.replace(/\s/g, "\\ ")}*`
     }
     if (search.length < searchLength) {
       setLetters(null)

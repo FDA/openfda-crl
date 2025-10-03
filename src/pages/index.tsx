@@ -21,7 +21,7 @@ const IndexPage: React.FC<PageProps> = () => {
             searchHeader='Company Name'
             errorText='At least three characters are required.'
             placeholder="Type in all or part of the company's name, or type *** to search all"
-            searchField='company_name'
+            searchField='company_name.exact'
             searchLength={3}
             columnLabels={['Status','CRL Date','Company Name','CRL File']}
             tableType='standard'
