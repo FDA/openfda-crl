@@ -91,6 +91,13 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
               'file_name': file_name
             })
           })
+          data.push({
+            'status': 'Unapproved',
+            'letter_date': '2026/04/10',
+            'company_name': 'Replimune, Inc.',
+            'file_name': {'application_number': 'BL 125827','file_name': 'CRL_BLA125827_20260410.pdf'}
+          })
+          console.log("data: ", data)
           setLetters(data)
           setErrMsg('')
         })
