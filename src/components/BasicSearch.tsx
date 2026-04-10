@@ -129,8 +129,8 @@ export default function BasicSearch({searchHeader, errorText, placeholder, searc
         search_query = `${search_query}${search_parameter?'+AND+':'search='}letter_date:[${year.value}-01-01+TO+${year.value}-12-31]`
         search_parameter = true
       }
+      setSearchQuery(`${search_query}${search_parameter?'&':''}limit=1000`)
     }
-    setSearchQuery(`${search_query}${search_parameter?'&':''}limit=1000`)
   };
 
   const onStatusChange = e => {
